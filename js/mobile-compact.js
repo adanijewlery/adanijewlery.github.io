@@ -6,7 +6,7 @@
   const title = document.createElement('p');
   title.textContent = 'Shop by category';
   const links = document.createElement('div');
-  [['rings','Rings'],['necklaces','Necklaces'],['bracelets','Bracelets'],['earrings','Earrings'],['sets','Sets'],['wedding','Wedding bands'],['design','Design your own']].forEach(([category,label]) => {
+  [['rings','Rings'],['necklaces','Necklaces'],['bracelets','Bracelets'],['earrings','Earrings'],['sets','Sets'],['design','Design your own']].forEach(([category,label]) => {
     const link = document.createElement('a');
     link.href = category === 'design' ? '#design' : '#pieces';
     const source = category === 'design' ? document.querySelector('#photo-studio-image') : document.querySelector(`#pieces [data-category="${category}"] img`);

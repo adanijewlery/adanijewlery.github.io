@@ -165,12 +165,14 @@ dialog.addEventListener('click', event => {
 });
 dialog.addEventListener('close', () => { if (opener) opener.focus({preventScroll:true}); });
 let activeCategory = 'all';
+let cabinetSubset = null;
 let jewelleryQuery = '';
 let cabinetLimit = 6;
 const moreButton = document.querySelector('#cabinet-more');
 function updateCabinet(reveal = false) {
   document.querySelector('#pieces').dataset.activeCategory=activeCategory;
   const matches = pieces.filter(piece => {
+    if(cabinetSubset&&!cabinetSubset.has(piece.querySelector('.image-button').dataset.image))return false;
     if(jewelleryQuery){
       const heading=piece.querySelector('h3')?.textContent||'';
       const name=piece.querySelector('.image-button').dataset.name;
@@ -202,6 +204,7 @@ filters.forEach(button => button.addEventListener('click', () => {
   jewelleryQuery = '';
   document.querySelector('#site-search').value = '';
   activeCategory = button.dataset.filter;
+  cabinetSubset = null;
   cabinetLimit = 6;
   filters.forEach(filter => filter.setAttribute('aria-pressed', String(filter === button)));
   updateCabinet(true);
@@ -236,7 +239,7 @@ function searchJewellery(){
  const intro=document.querySelector('#pieces .section-heading > p');
  if(intro)intro.replaceChildren(document.createTextNode('Explore the collection.'),document.createElement('br'),document.createTextNode('Select a piece to discover its details.'));
  jewelleryQuery=jewellerySearch.value.normalize('NFKC').trim().toLocaleLowerCase();
- activeCategory='all';cabinetLimit=jewelleryQuery?pieces.length:6;
+ cabinetSubset=null;activeCategory='all';cabinetLimit=jewelleryQuery?pieces.length:6;
  filters.forEach(filter=>filter.setAttribute('aria-pressed',String(filter.dataset.filter==='all')));
  document.querySelector('#pieces').classList.remove('collection-awaiting');
  updateCabinet(true);
@@ -245,3 +248,5 @@ jewellerySearch.addEventListener('input',searchJewellery);
 document.querySelector('.header-search').addEventListener('submit',event=>{
  event.preventDefault();searchJewellery();document.querySelector('#pieces').scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth'});
 });
+
+document.addEventListener('adani:subcategory',event=>{cabinetSubset=event.detail.images?new Set(event.detail.images):null;cabinetLimit=6;updateCabinet(true);});

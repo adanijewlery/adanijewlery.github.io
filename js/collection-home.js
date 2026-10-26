@@ -43,7 +43,7 @@
  tennisPanel?.addEventListener('toggle',()=>tennisButton?.setAttribute('aria-expanded',String(tennisPanel.open)));
  function revealLinkedCollection(){
   if(location.hash==='#tennis')openTennis();
-  if(location.hash==='#wedding'){section.classList.remove('collection-awaiting');closeTennis();section.querySelector('[data-filter="wedding"]')?.click();requestAnimationFrame(()=>scrollCabinet('instant'));}
+  if(location.hash==='#wedding'){location.replace('index.html#pieces');}
   if(location.hash==='#sets'){section.classList.remove('collection-awaiting');closeTennis();}
  }
  window.addEventListener('hashchange',revealLinkedCollection);revealLinkedCollection();
