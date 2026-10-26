@@ -40,6 +40,7 @@
     sourceCache.set(key,pending);try{return await pending;}catch(e){sourceCache.delete(key);throw e;}
   }
   async function photo(key,metal){
+    if(key.startsWith('world-edit-'))return 'assets/images/'+key+'-'+metal+'-960.webp';
     if(metal==='yellow')return `${assetRoot}/${key}-960.webp`;
     const cacheKey=key+'|'+metal;if(renderCache.has(cacheKey))return renderCache.get(cacheKey);
     const original=await loadSource(key);const canvas=document.createElement('canvas');canvas.width=original.width;canvas.height=original.height;
@@ -73,7 +74,9 @@
     const url=await photo(key,metal);if(version!==dialogRevision||current!==key)return;
     large.src=url;large.alt=cards.find(c=>c.dataset.tennis===key).dataset.name+' · '+metalLabels[metal];
   }
+  const originalSpecs=dialog.querySelector('.tennis-specs').textContent;
   async function open(card,button){
+    dialog.querySelector('.tennis-specs').textContent=card.classList.contains('world-edit-native')?'Design preview. Final materials, dimensions, availability and price are confirmed personally.':originalSpecs;
     current=card.dataset.tennis;opener=button;sync();
     dialog.querySelector('h2').textContent=card.dataset.name;
     dialog.querySelector('.tennis-description').textContent=card.dataset.description;

@@ -11,9 +11,10 @@
    if(video.getAttribute('src')!==path){video.src=path;video.load();}
  }
  async function play(){source();try{await video.play();}catch{/* Keep the poster visible when autoplay is blocked. */}}
- function update(){if(visible&&!document.hidden&&automaticAllowed)play();else video.pause();}
+ function update(){if(visible&&!document.hidden&&automaticAllowed&&document.documentElement.dataset.reduceMotion!=='true')play();else video.pause();}
  if('IntersectionObserver' in window)new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;update();},{threshold:.08}).observe(section);
  document.addEventListener('visibilitychange',update);
+ document.addEventListener('adani:accessibilitychange',update);
  motion.addEventListener('change',()=>{automaticAllowed=!motion.matches&&!navigator.connection?.saveData;update();});
  phone.addEventListener('change',()=>{if(video.getAttribute('src'))source();else video.poster=`assets/craft/atelier-loop-${phone.matches?'phone':'desktop'}.jpg`;update();});
  video.poster=`assets/craft/atelier-loop-${phone.matches?'phone':'desktop'}.jpg`;

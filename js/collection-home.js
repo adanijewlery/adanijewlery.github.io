@@ -9,6 +9,7 @@
  selectCategory(null);
  section.classList.add('collection-awaiting');
  function scrollCabinet(behavior='smooth'){
+  if(document.documentElement.dataset.reduceMotion==='true'||matchMedia('(prefers-reduced-motion:reduce)').matches)behavior='instant';
   const target=section.querySelector('.cabinet-tools');if(!target)return;
   const headerHeight=document.querySelector('header')?.getBoundingClientRect().height||0;
   window.scrollTo({top:Math.max(0,scrollY+target.getBoundingClientRect().top-headerHeight-16),behavior});
@@ -43,7 +44,7 @@
  tennisPanel?.addEventListener('toggle',()=>tennisButton?.setAttribute('aria-expanded',String(tennisPanel.open)));
  function revealLinkedCollection(){
   if(location.hash==='#tennis')openTennis();
-  if(location.hash==='#wedding'){location.replace('index.html#pieces');}
+  if(location.hash==='#wedding'){section.querySelector('[data-filter="wedding"]')?.click();requestAnimationFrame(()=>scrollCabinet('instant'));}
   if(location.hash==='#sets'){section.classList.remove('collection-awaiting');closeTennis();}
  }
  window.addEventListener('hashchange',revealLinkedCollection);revealLinkedCollection();

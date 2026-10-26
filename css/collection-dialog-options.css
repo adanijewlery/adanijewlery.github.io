@@ -1,0 +1,5 @@
+/* Collection cards show the piece; customization lives in its dialog. */
+:is(.piece,.inspiration-card,.tennis-card) :is(.world-gold-options,.world-purity,.tennis-colours,.tennis-purity,.classic-earring-options,.jadi-finishes),
+#tennis .tennis-purity {
+  display: none !important;
+}
