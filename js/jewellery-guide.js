@@ -38,6 +38,6 @@
     }
     input.addEventListener('input',calculate);method.addEventListener('change',()=>{input.value='';input.placeholder=method.value==='diameterCm'?'1.73':'5.43';calculate();});
     use.addEventListener('click',()=>{if(!selected)return;design.querySelector('[data-piece="ring"]').click();ringSize.value=String(selected.hk);ringSize.dispatchEvent(new Event('change',{bubbles:true}));ringSize.focus();ringSize.scrollIntoView({block:'center',behavior:'smooth'});});
-    const footer=document.querySelector('footer');if(footer){const link=document.createElement('a');link.href='#sizing';link.textContent='Sizing guide';footer.append(link);}
+
   });
 })();
