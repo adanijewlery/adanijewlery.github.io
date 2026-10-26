@@ -1,0 +1,9 @@
+/* One full-width workshop background, with readable text and a pause control. */
+main>#craft.craft-background{position:relative;isolation:isolate;display:flex;flex-direction:column;justify-content:center;min-height:510px;overflow:hidden;padding:64px 7%;background:#080f2a;border-block:1px solid var(--line)}
+#craft .craft-background-video{position:absolute;inset:0;z-index:-2;display:block;width:100%;height:100%;object-fit:cover;object-position:center;background:#080f2a;filter:grayscale(1)}
+#craft.craft-background::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,#080808e8 0%,#0808089c 48%,#08080838 100%)}
+html[dir=rtl] #craft.craft-background::before{background:linear-gradient(270deg,#080808e8 0%,#0808089c 48%,#08080838 100%)}
+#craft.craft-background .atelier-heading{margin:0;max-width:620px}#craft.craft-background h2{color:#fff8e9;text-shadow:0 2px 20px #0008}#craft.craft-background .atelier-heading>p:last-child{color:#f0eee8;max-width:42ch}
+.craft-playback{align-self:flex-start;min-height:44px;margin-top:24px;padding:10px 18px;border:1px solid #dec0879c;border-radius:2px;background:#080f2a99;color:#f3dfac;font:12px/1.5 Arial,sans-serif;cursor:pointer;backdrop-filter:blur(6px)}
+@media(max-width:700px){main>#craft.craft-background{min-height:430px;padding:36px 6%;justify-content:flex-end}#craft.craft-background::before,html[dir=rtl] #craft.craft-background::before{background:linear-gradient(0deg,#080808ee 0%,#08080894 55%,#08080833 100%)}#craft.craft-background h2{font-size:35px}#craft.craft-background .atelier-heading>p:last-child{font-size:13px;line-height:1.7}.craft-playback{margin-top:14px}}
+

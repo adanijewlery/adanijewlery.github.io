@@ -1,0 +1,9 @@
+/* Product photograph comparison controls. */
+.diamond-photo-comparison{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;padding:14px 20px}
+.diamond-photo-comparison[hidden]{display:none}
+.diamond-photo-comparison button{background:transparent;color:#f4f1e9;border:1px solid #57637c;padding:10px 16px;cursor:pointer;font-size:12px;min-height:44px}
+.diamond-photo-comparison button[aria-pressed=true]{border-color:#dec087;background:#dec08720;color:#f4e4be}
+.diamond-refined-label{display:block;font-size:11px;color:#c1c9dc;line-height:1.6;margin:8px 0}
+
+/* Product-photo processing captions are omitted from the presentation. */
+.tennis-preview-label{display:none!important}

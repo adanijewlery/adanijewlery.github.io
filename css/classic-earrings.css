@@ -1,0 +1,23 @@
+/* Classic concepts only: compact, touch-friendly options beside each preview. */
+.classic-earring-options{padding:14px 0 10px;border-top:1px solid #dec08733;margin:12px 0;color:#e8dfcc;min-width:0;letter-spacing:normal}
+.classic-earring-options fieldset{border:0;padding:0;margin:0 0 12px;min-width:0}
+.classic-earring-options legend,.earring-size>span{font:12px/1.5 system-ui,sans-serif;color:#bdc6d6;padding:0;margin:0 0 7px;display:block}
+.earring-metals{display:flex;gap:6px;flex-wrap:wrap}
+.earring-metals button{display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 9px;min-height:44px;background:transparent;border:1px solid #8b9ab04d;color:#d4dbe5;font:11px/1.35 system-ui,sans-serif;cursor:pointer;flex:1 1 78px}
+.earring-metals button[aria-pressed=true]{border-color:#dec087;background:#dec08714;color:#f2dbab}
+.earring-metals button:focus-visible,.earring-size select:focus-visible{outline:2px solid #f2dbab;outline-offset:3px}
+.earring-swatch{width:13px;height:13px;flex:0 0 13px;border-radius:50%;box-shadow:inset 0 0 0 1px #ffffff50}
+.earring-swatch.yellow{background:linear-gradient(135deg,#fff2be,#b7832c)}.earring-swatch.white{background:linear-gradient(135deg,#fff,#919cae)}.earring-swatch.rose{background:linear-gradient(135deg,#ffdfd0,#b87565)}
+.earring-size{display:flex;align-items:center;justify-content:space-between;gap:12px;font:12px/1.5 system-ui,sans-serif}
+.earring-size>span{margin:0}.earring-size select{min-height:44px;min-width:110px;max-width:60%;padding:7px 10px;border:1px solid #8b9ab066;color:#f1e6d1;background:#0c1830;font:12px/1.4 system-ui,sans-serif;border-radius:0}
+.classic-earring-options .earring-size-note{font:10px/1.65 system-ui,sans-serif!important;color:#aeb9ca!important;max-width:52ch;margin:10px 0 0!important;letter-spacing:normal;text-transform:none}
+.classic-earring-options .earring-status{font:11px/1.5 system-ui,sans-serif!important;color:#edcf93!important;margin:6px 0 0!important;letter-spacing:normal;text-transform:none}
+.classic-earring-options .earring-status:empty{display:none}
+.classic-earring-options[aria-busy=true]{opacity:.75}
+#piece-dialog .classic-earring-options,#inspiration-dialog .classic-earring-options{max-width:620px}
+@media(max-width:600px){.earring-metals{gap:5px}.earring-metals button{flex:1 1 100%;justify-content:flex-start;padding-inline:10px}.earring-size{align-items:flex-start;flex-direction:column;gap:5px}.earring-size select{width:100%;max-width:100%}.classic-earring-options .earring-size-note{font-size:10px!important}dialog .earring-metals button{flex:1 1 90px;justify-content:center}dialog .earring-size{flex-direction:row;align-items:center}dialog .earring-size select{width:auto}}
+/* Keep title and custom options readable together in the product dialog. */
+#piece-dialog>div:has(>.classic-earring-options){display:block!important;padding:22px 26px!important}
+#piece-dialog>div:has(>.classic-earring-options)>h2{margin:0 0 12px}
+#piece-dialog:has(.classic-earring-options) .gallery-stage>img{height:48vh;object-fit:contain}
+#piece-dialog .classic-earring-options{max-width:none}

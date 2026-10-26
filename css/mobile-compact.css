@@ -1,0 +1,62 @@
+/* Phone presentation only. Desktop rules and collection behaviour stay intact. */
+.mobile-browse-controls,.mobile-shop-nav{display:none}
+@media(max-width:700px){
+  main>.section,main>.atelier-section,main>.jewellery-sizing,#how-to-order.order-journey{padding:38px 6%}
+  .section-heading,.atelier-heading,.journey-heading{margin-bottom:22px;gap:12px}
+  .section-heading h2,.atelier-heading h2,.jewellery-sizing h2{font-size:32px;line-height:1.12}
+  .section-heading>p{margin-top:8px}
+  .house-note{padding:28px 6%}
+  .house-monogram{margin-bottom:20px;width:40px;height:52px;font-size:28px;line-height:52px}
+  .house-note p{font-size:26px;margin-bottom:14px}
+  .mobile-browse-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:16px 0 12px;color:var(--accent);font-size:12px}
+  .mobile-browse-controls>span:last-child{display:flex;gap:8px;direction:ltr}
+  .mobile-browse-controls button{width:44px;height:44px;border:1px solid var(--line);background:transparent;border-radius:50%;color:var(--accent);font:20px Georgia,serif;cursor:pointer}
+  html[dir=rtl] .mobile-browse-controls>span:last-child{direction:rtl}
+  html[dir=rtl] .mobile-browse-controls button{transform:scaleX(-1)}
+  .inspiration-grid,#pieces .piece-grid,.tennis-grid,.house-feature-grid,.craft-films,.customer-review-grid,.detail-grid{
+    display:flex;gap:16px;align-items:flex-start;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-inline:0;padding:0 0 14px;margin-inline:0;max-width:100%;scrollbar-width:thin;scrollbar-color:#dec08770 #101a30
+  }
+  .inspiration-grid>*,#pieces .piece-grid>.piece,.tennis-grid>*,.house-feature-grid>*,.craft-films>*,.customer-review-grid>*,.detail-grid>*{
+    flex:0 0 86%;min-width:0;max-width:none;width:auto;scroll-snap-align:start;scroll-snap-stop:normal;margin:0;grid-column:auto;padding-top:0
+  }
+  #pieces[data-active-category=sets] .piece-grid>.set-piece{display:block;width:auto;flex:0 0 86%}
+  .piece figcaption{margin-top:12px;padding-top:12px}
+  .piece h3,.house-feature h3,.tennis-card h3{font-size:24px}
+  .tennis-colours{gap:5px}
+  .tennis-colours button{font-size:11px;padding:8px 6px;min-height:44px}
+  .tennis-purity{margin:18px 0}
+  .tennis-specs{margin-top:18px}
+  .customer-review-grid{align-items:stretch}
+  .customer-review-grid>.customer-review{padding:20px}
+  .customer-review blockquote{font-size:15px;line-height:1.7}
+  .craft-film video{height:340px;max-height:52svh;aspect-ratio:auto}
+  .craft-film figcaption{margin-top:12px}
+  .craft-film h3{font-size:21px}
+  .craft-link{margin-top:12px}
+  .perspective>img,.perspective-image{height:240px;min-height:0;object-fit:cover}
+  .perspective-copy{padding:32px 6%}
+  .perspective-copy h2{font-size:34px}
+  .contact.section{padding:0}
+  .contact-image{height:220px;min-height:0}
+  .contact-copy{padding:34px 7%}
+  .journey-heading{gap:12px}
+  .journey-heading h2{font-size:38px}
+  .journey-stage{height:460px}
+  .journey-image{height:230px}
+  .journey-swatches,[dir=rtl] .journey-swatches{top:190px}
+  .journey-copy,[dir=rtl] .journey-copy{padding:0 22px 54px}
+  .journey-copy h3{font-size:29px;margin-bottom:12px}
+  .journey-copy>p{margin-bottom:12px}
+  .sizing-grid{margin-top:24px;gap:24px}
+  .sizing-grid h3{font-size:23px;margin-bottom:14px}
+  .sizing-grid p,.sizing-grid li{font-size:13px;line-height:1.65}
+  .sizing-grid h4{margin-top:18px}
+  .hk-checker{padding:16px;gap:12px}
+  .mobile-shop-nav{display:block;padding:28px 6%;background:#0b142b;border-bottom:1px solid var(--line)}
+  .mobile-shop-nav>p{font-size:12px;letter-spacing:.08em;color:var(--accent);margin:0 0 16px}
+  .mobile-shop-nav>div{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+  .mobile-shop-nav a{display:flex;flex-direction:column;align-items:center;gap:8px;padding:10px 5px;min-height:44px;border:1px solid var(--line);border-radius:4px;font-size:12px;text-align:center;color:var(--ink);text-decoration:none}
+  .mobile-shop-nav img{width:56px;height:56px;object-fit:cover;border-radius:50%;border:1px solid #dec08745}
+  .house-conversation{gap:20px}
+  .house-conversation h2{font-size:32px}
+}

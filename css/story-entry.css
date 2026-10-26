@@ -1,0 +1,5 @@
+/* Entry points to the separate story page. */
+.footer-story-link{display:inline-flex;align-items:center;min-height:44px;color:var(--accent)}
+@media(max-width:1200px){.header nav>.our-story-nav{display:none}}
+
+@media(max-width:700px){.header nav>.our-story-nav{display:inline-flex;align-items:center;font-size:11px;min-height:44px;padding-block:8px}.header nav{gap:10px}}

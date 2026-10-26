@@ -1,0 +1,86 @@
+/* A compact product viewer that fits the viewport without an inner scroll area. */
+html:has(dialog[open]),body:has(dialog[open]){overflow:hidden;overscroll-behavior:none}
+#piece-dialog{width:min(680px,94vw);max-width:94vw;height:min(780px,94dvh);max-height:94dvh;overflow:hidden;border:1px solid #dec08755;border-radius:4px;box-shadow:0 24px 90px #0008}
+#piece-dialog[open]{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto auto auto;gap:0}
+#piece-dialog .gallery-stage{grid-column:1;grid-row:1;min-height:0;min-width:0;display:block!important;align-self:stretch;background:#080f20;overflow:hidden}
+#piece-dialog .gallery-stage>img,#piece-dialog:has(.classic-earring-options) .gallery-stage>img{width:100%;height:100%;max-height:none;object-fit:contain;touch-action:manipulation}
+#piece-dialog #photo-views{grid-column:1;grid-row:2;flex-wrap:nowrap;gap:8px;padding:8px 16px 0!important;min-width:0}
+#piece-dialog #photo-views button{flex:1;min-width:0;min-height:44px;padding:6px;border:1px solid #dec08733;font-size:11px;line-height:1.25}
+#piece-dialog #photo-views button[aria-pressed=true]{border-color:#dec087;background:#dec0870c}
+#piece-dialog #photo-views img{width:42px;height:42px;object-fit:contain;margin:0 auto 4px}
+#piece-dialog #gallery-position{grid-column:1;grid-row:3;margin:8px 0 0;font-size:10px;line-height:1.2}
+#piece-dialog>div:last-child,#piece-dialog>div:has(>.classic-earring-options){grid-column:1;grid-row:4;display:flex!important;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:8px;padding:14px 20px 18px!important;min-width:0}
+#piece-dialog #dialog-title{font-size:clamp(21px,3vw,28px);line-height:1.12;margin:0!important;letter-spacing:0}
+#piece-dialog #dialog-concept-note{font-size:11px;line-height:1.45;margin:0;color:var(--muted)}
+#piece-dialog #dialog-contact{display:flex;min-height:44px;margin:0;padding:10px 14px;font-size:12px!important;justify-content:center;flex-shrink:0}
+#piece-dialog .classic-earring-options{padding:6px 0 0;margin:0}
+#piece-dialog .classic-earring-options fieldset{margin-bottom:6px}
+#piece-dialog .classic-earring-options legend{margin-bottom:4px}
+#piece-dialog .earring-size-note{margin-top:4px!important;line-height:1.35!important}
+#piece-dialog .earring-status{margin:2px 0 0!important}
+#piece-dialog .diamond-photo-comparison{padding:4px 0;gap:8px}
+#piece-dialog .gallery-arrow{width:40px;height:40px;border-color:#dec08755;border-radius:2px;font-size:19px;background:#080f2acc}
+/* Draw a precise, balanced cross while keeping the accessible button label. */
+.close-dialog,.tennis-close{position:absolute;z-index:5;top:10px;right:10px;left:auto;width:44px;height:44px;min-width:44px;min-height:44px;padding:0;border:1px solid #dec08766;border-radius:3px;background:#080f2aeb;color:#f0dec0;font-size:0!important;cursor:pointer;box-shadow:0 2px 12px #0003}
+.close-dialog::before,.close-dialog::after,.tennis-close::before,.tennis-close::after{content:"";position:absolute;top:50%;left:50%;width:17px;height:1px;background:currentColor;transform:translate(-50%,-50%) rotate(45deg)}
+.close-dialog::after,.tennis-close::after{transform:translate(-50%,-50%) rotate(-45deg)}
+.close-dialog:hover,.tennis-close:hover{border-color:#dec087;background:#152039}
+.close-dialog:focus-visible,.tennis-close:focus-visible{outline:2px solid #dec087;outline-offset:3px}
+@media(max-width:600px){
+ #piece-dialog{width:94vw;height:94dvh}
+ #piece-dialog #photo-views{padding-inline:10px!important;gap:5px}
+ #piece-dialog>div:last-child,#piece-dialog>div:has(>.classic-earring-options){padding:10px 12px 12px!important;gap:6px}
+ #piece-dialog .earring-metals button{padding:6px 3px;font-size:10px;gap:4px;flex:1 1 0}
+ #piece-dialog .earring-size select{max-width:65%;min-width:0}
+}
+@media(max-height:620px){
+ #piece-dialog{height:96dvh;max-height:96dvh;width:min(760px,96vw)}
+ #piece-dialog[open]{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto auto}
+ #piece-dialog .gallery-stage{grid-column:1;grid-row:1}
+ #piece-dialog #photo-views{grid-column:1;grid-row:2}
+ #piece-dialog #gallery-position{grid-column:1;grid-row:3;margin-bottom:10px}
+ #piece-dialog>div:last-child,#piece-dialog>div:has(>.classic-earring-options){grid-column:2;grid-row:1/4;justify-content:center}
+ #piece-dialog #photo-views img{width:28px;height:28px}
+ #piece-dialog #photo-views button{font-size:10px}
+}
+#piece-dialog #photo-views:not([hidden]){display:flex!important} #piece-dialog #photo-views button{width:auto!important;max-width:none!important}
+
+/* Polished gold gallery arrows; keep the existing viewer layout. */
+#piece-dialog .gallery-arrow{
+ width:44px;height:44px;min-width:44px;min-height:44px;padding:0;
+ display:grid;place-items:center;overflow:hidden;isolation:isolate;
+ border:1px solid #f3dba4;border-radius:5px;
+ background:linear-gradient(145deg,#fff0c4 0%,#e5c788 28%,#c49b54 52%,#edd49a 76%,#cba45f 100%);
+ color:#142039;font-size:0!important;
+ box-shadow:inset 0 1px 0 #fff9e6d9,inset 0 -1px 0 #8d642a66,0 3px 12px #0005,0 0 14px #dec08718;
+ transition:background .2s ease,box-shadow .2s ease,border-color .2s ease;
+}
+#piece-dialog .gallery-arrow[hidden]{display:none}
+#piece-dialog .gallery-arrow::before{
+ content:"";width:20px;height:20px;background:currentColor;
+ -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12h14m-6-6 6 6-6 6' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12h14m-6-6 6 6-6 6' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;
+ filter:drop-shadow(0 1px 0 #fff2ceaa);
+}
+#piece-dialog .gallery-prev::before{transform:rotate(180deg)}
+#piece-dialog .gallery-arrow::after{
+ content:"";position:absolute;inset:-25% -80%;z-index:-1;pointer-events:none;
+ background:linear-gradient(110deg,transparent 42%,#fffbedaa 50%,transparent 58%);
+ transform:translateX(-60%);transition:transform .55s ease;
+}
+@media(hover:hover){
+ #piece-dialog .gallery-arrow:hover{border-color:#fff4d2;background:linear-gradient(145deg,#fff4d6,#efd49c 32%,#d1ad6c 60%,#f5e0b0);box-shadow:inset 0 1px 0 #fffbed,0 4px 15px #0005,0 0 18px #dec08740}
+ #piece-dialog .gallery-arrow:hover::after{transform:translateX(60%)}
+}
+#piece-dialog .gallery-arrow:active{box-shadow:inset 0 2px 5px #79551b55,0 1px 5px #0004}
+#piece-dialog .gallery-arrow:focus-visible{outline:2px solid #fff1cb;outline-offset:4px}
+@media(prefers-reduced-motion:reduce){#piece-dialog .gallery-arrow,#piece-dialog .gallery-arrow::after{transition:none}#piece-dialog .gallery-arrow::after{display:none}}
+
+/* Position the icon independently of the button's fallback text node. */
+#piece-dialog .gallery-arrow::before{position:absolute;top:50%;left:50%;margin:0;transform:translate(-50%,-50%)}
+#piece-dialog .gallery-prev::before{transform:translate(-50%,-50%) rotate(180deg)}
+
+/* Use an actual SVG box: no glyph baseline or pseudo-element alignment. */
+#piece-dialog .gallery-arrow::before{content:none;display:none}
+#piece-dialog .gallery-arrow .gallery-arrow-icon{position:absolute;inset:0;width:20px;height:20px;max-width:none;margin:auto;padding:0;display:block;overflow:visible;transform:none;pointer-events:none;filter:drop-shadow(0 1px 0 #fff2ce66)}
+#piece-dialog .gallery-prev .gallery-arrow-icon{transform:rotate(180deg)}

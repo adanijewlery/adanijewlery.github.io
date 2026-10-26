@@ -1,0 +1,73 @@
+.bestseller-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 24px}.bestseller-card{margin:0;min-width:0}.bestseller-photo{display:block;width:100%;position:relative;aspect-ratio:1;padding:0;border:1px solid var(--line);background:#080f2a;cursor:zoom-in}.bestseller-photo img{width:100%;height:100%;object-fit:contain}.bestseller-photo>span{position:absolute;bottom:12px;right:14px;color:var(--accent)}.bestseller-card h3{font:24px/1.3 Georgia,serif;margin:14px 0 0}.bestseller-swipe{display:none}
+.collection-categories{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px;margin-bottom:28px}.collection-categories button{padding:0;border:1px solid var(--line);background:#0b1730;cursor:pointer;text-align:start}.collection-categories img{aspect-ratio:1;width:100%;height:auto;object-fit:contain}.collection-categories span{display:block;padding:14px;font-size:14px;color:var(--accent)}
+.collection-awaiting :is(.cabinet-tools,.piece-grid,#cabinet-more,.selection-enquiry,#selection-empty){display:none!important}
+.tennis-collection-details{margin:0 6% 28px;border-block:1px solid var(--line)}.tennis-collection-details>summary{padding:20px 0;color:var(--accent);cursor:pointer;font-size:15px}.tennis-collection-details>.section{padding-inline:0}
+@media(max-width:700px){.bestseller-grid{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:14px;scrollbar-width:thin;scrollbar-color:#dec08770 #101a30}.bestseller-card{flex:0 0 84%;scroll-snap-align:start}.bestseller-card h3{font-size:23px}.bestseller-swipe{display:block;font-size:12px;color:var(--accent);margin:0 0 14px}.collection-categories{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.collection-categories span{padding:12px;font-size:13px}.tennis-collection-details{margin-bottom:20px}}
+.collection-awaiting .mobile-browse-controls{display:none!important}
+
+.tennis-collection-details:not([open]){display:none}
+@media(min-width:701px) and (max-width:1000px){.collection-categories{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* Four products per desktop row in Best sellers. */
+@media(min-width:1001px){.bestseller-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+/* Choosing Tennis opens the gallery directly, without a second disclosure. */
+.tennis-collection-details[open]>summary{display:none}
+.tennis-collection-details[open]{border-top:0}
+#tennis .tennis-purity{scroll-margin-top:0}
+/* Collection titles sit within the image rather than in a separate caption. */
+.collection-categories button{position:relative;isolation:isolate;aspect-ratio:1;overflow:hidden;text-align:center}
+.collection-categories button>img{display:block;width:100%;height:100%;aspect-ratio:1;object-fit:contain}
+.collection-categories button::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#03071208,#03071255 50%,#03071212);pointer-events:none}
+.collection-categories button>span{position:absolute;inset:0;z-index:1;display:grid;place-items:center;padding:12px;font:400 clamp(19px,2.1vw,27px)/1.2 Georgia,serif;color:#fff4dc;text-shadow:0 2px 12px #000,0 1px 3px #000;pointer-events:none}
+.collection-categories button:hover{border-color:#dec08799}
+@media(max-width:700px){.collection-categories button>span{font-size:clamp(20px,5.5vw,26px)}}
+/* Quiet feedback for mouse, keyboard and touch. */
+/* Phone collections are three columns, browsed down the page. */
+@media(max-width:700px){
+ #pieces .piece-grid,#pieces[data-active-category=sets] .piece-grid,#tennis .tennis-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 8px;overflow:visible;scroll-snap-type:none;padding:0;align-items:start;margin-inline:-4vw;max-width:none}
+ #pieces .piece-grid>.piece,#pieces[data-active-category=sets] .piece-grid>.set-piece,#tennis .tennis-grid>*{min-width:0;width:100%;max-width:100%;margin:0;grid-column:auto;scroll-snap-align:none;padding-top:0}
+ #pieces .piece h3,#tennis .tennis-card h3{font-size:15px;line-height:1.3;letter-spacing:0;overflow-wrap:anywhere}
+ #pieces .piece figcaption{margin-top:9px;padding-top:9px}
+ #pieces .catalogue-number{font-size:10px;margin-bottom:7px}
+ #pieces .piece figcaption>span:not(.catalogue-number),#pieces .piece figcaption p,#pieces .instagram-source,#tennis .tennis-card p{font-size:11px;line-height:1.5;max-width:100%;overflow-wrap:anywhere}
+ #pieces .mobile-browse-controls,#tennis .mobile-browse-controls{display:none}
+ #pieces .piece figcaption>:not(h3),#tennis .tennis-card>p:not([role=status]){display:none!important}
+ #pieces .piece-grid .piece .save-piece{width:30px;height:30px;top:5px;right:5px;left:auto;inset-inline-end:5px}
+ #pieces .piece-grid .piece .save-piece svg{width:15px;height:15px}
+ #pieces .piece-grid .piece .save-piece::after{content:"";position:absolute;inset:-7px;border-radius:50%}
+ #tennis .tennis-colours{flex-direction:column;align-items:stretch}
+ #tennis .tennis-colours button{font-size:10px;padding:6px 3px}
+ #tennis .tennis-enquire{font-size:11px;overflow-wrap:anywhere}
+}
+.collection-categories button{transition:border-color .22s ease,box-shadow .22s ease,transform .16s ease}
+.collection-categories button>img{transition:filter .3s ease}
+.collection-categories button::after{transition:opacity .25s ease}
+.collection-categories button>span{transition:color .2s ease,text-shadow .2s ease}
+@media(hover:hover) and (pointer:fine){
+ .collection-categories button:hover{border-color:#dec087;box-shadow:0 8px 24px #0004;transform:translateY(-3px)}
+ .collection-categories button:hover>img{filter:brightness(1.08)}
+ .collection-categories button:hover::after{opacity:.65}
+ .collection-categories button:hover>span{color:#fff9ec;text-shadow:0 2px 14px #000}
+}
+.collection-categories button:focus-visible{outline:2px solid #dec087;outline-offset:4px;border-color:#dec087}
+.collection-categories button:active{transform:scale(.975);border-color:#f4dfb8;box-shadow:inset 0 0 0 1px #dec08780}
+.header .language-picker select:active,.story-header .story-language select:active{border-color:#f4dfb8;background-color:#dec08720}
+@media(prefers-reduced-motion:reduce){
+ .collection-categories button,.collection-categories button>img,.collection-categories button::after,.collection-categories button>span{transition:none}
+ .collection-categories button:hover,.collection-categories button:active,.collection-categories button:hover>img{transform:none}
+}
+
+
+.collection-categories{gap:12px;align-items:stretch}
+.collection-categories button{min-width:0;border-color:#dec08738}
+.collection-categories button[aria-pressed=true]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.collection-categories button[aria-pressed=true]>span{color:#ffe7b6}
+@media(min-width:1001px){.collection-categories{grid-template-columns:repeat(7,minmax(0,1fr))}}
+@media(max-width:700px){
+ .collection-categories{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:24px}
+ .collection-categories button>span{font-size:clamp(15px,4.3vw,21px);line-height:1.25;padding:6px;overflow-wrap:anywhere}
+}
+
+@media(max-width:1000px){.collection-categories [data-open-collection=wedding]{grid-column:1/-1;aspect-ratio:4/1}}
+@media(max-width:700px){.collection-categories [data-open-collection=wedding]{aspect-ratio:3/1}}

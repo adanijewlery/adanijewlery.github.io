@@ -1,0 +1,24 @@
+/* A centred fixed header with wrapped navigation, without a sideways menu. */
+html{scroll-padding-top:calc(var(--site-header-height,124px) + 16px)}
+.header{position:fixed;inset:0 0 auto;transform:none;width:100%;height:auto;min-height:124px;padding:72px 5% 8px;z-index:50;display:block;background:#080f2afa;border-bottom:1px solid var(--line)}
+.header .wordmark{position:absolute;top:17px;left:50%;transform:translateX(-50%);width:144px}
+.header .logo-metal{width:144px;height:auto}
+.header .wordmark .logo-caption{font-size:6px;letter-spacing:1.6px;margin-top:7px;white-space:nowrap!important}
+.header .language-picker{top:23px;left:5%;right:auto;inset-inline-end:auto;transform:none}
+.header nav{width:100%;height:auto;min-height:40px;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:2px 26px;margin:0;overflow:visible;font-size:11px;letter-spacing:0}
+.header nav>a,.header nav>.our-story-nav,.header nav>a[href="#design"]{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding-block:8px;flex:0 0 auto;white-space:nowrap;font-size:11px;letter-spacing:0}
+.header .contact-nav,html[dir=rtl] .header .contact-nav{margin:0;font-size:12px;padding:8px 14px}
+.header-search{display:flex;align-items:stretch;gap:8px;width:min(580px,100%);margin:10px auto 0;height:38px}
+.header-search[hidden]{display:none}
+.header-search input{flex:1;min-width:0;border:1px solid var(--line);border-radius:2px;background:#101a33;color:var(--ink);padding:8px 12px;font:13px/1.4 Arial,sans-serif}
+.header-search input::placeholder{color:var(--muted);opacity:1}
+.header-search input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.header-search button{border:1px solid #dec08780;background:transparent;border-radius:2px;color:var(--accent);padding:6px 16px;font-size:12px;cursor:pointer;min-height:38px}
+@media(max-width:700px){.header{min-height:112px;padding:64px 6% 8px}.header .wordmark{top:16px;width:112px}.header .logo-metal{width:112px}.header .wordmark .logo-caption{font-size:5px;letter-spacing:1px;margin-top:5px}.header .language-picker{top:17px;left:6%;right:auto}.header .language-picker select{width:76px;max-width:76px;min-height:38px;font-size:11px;padding:6px 4px}.header nav{justify-content:center;gap:2px 14px;min-height:32px}.header nav>a,.header nav>.our-story-nav,.header nav>a[href="#design"]{font-size:11px;min-height:32px;padding-block:5px}.header .contact-nav,html[dir=rtl] .header .contact-nav{font-size:11px;min-height:32px;padding:6px 10px;margin:0}.header-search{margin-top:8px}.header-search input{font-size:16px}.header-search button{padding-inline:12px}}
+
+/* A light opening overlay, with the solid bar reserved for scrolling. */
+.header.is-at-page-top{transform:none;visibility:visible;pointer-events:auto;background:transparent;border-bottom-color:transparent}
+.header.is-at-page-top .language-picker select{background:transparent;border-color:#dec08770}
+.header.is-at-page-top .language-picker option{background:#080f2a;color:var(--ink)}
+.header.is-at-page-top .contact-nav{background:transparent;box-shadow:none;color:var(--ink);border:0;border-bottom:1px solid #dec08770;border-radius:0}
+.header.is-at-page-top nav>a{font-size:11px;text-shadow:0 1px 6px #0008}
