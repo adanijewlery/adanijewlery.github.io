@@ -847,7 +847,7 @@
   const dictionary = new Map(rows.map(([en, he, ru]) => [en, {he, ru}]));
   const allowed = [...document.querySelector('#site-language').options].map(option => option.value);
   let language = 'he';
-  try { const saved = localStorage.getItem('adani-language'); if (allowed.includes(saved)) language = saved; } catch {}
+  // Every new visit starts in Hebrew; the selector can still change this page.
   const cache = new WeakMap();
   const pick = (he, ru) => language === 'he' ? he : ru;
   function translate(source) {
