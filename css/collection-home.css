@@ -73,3 +73,8 @@
 @media(max-width:700px){.collection-categories [data-open-collection=wedding]{aspect-ratio:3/1}}
 
 @media(min-width:1001px){.collection-categories:has([data-open-collection="wedding"]){grid-template-columns:repeat(7,minmax(0,1fr))}}
+
+/* Eight collections, including pendants. */
+@media(min-width:1001px){.collection-categories:has([data-open-collection="pendants"]){grid-template-columns:repeat(8,minmax(0,1fr))}}
+@media(max-width:1000px){.collection-categories:has([data-open-collection="pendants"]){grid-template-columns:repeat(4,minmax(0,1fr))}.collection-categories:has([data-open-collection="pendants"]) [data-open-collection=wedding]{grid-column:auto;aspect-ratio:1}}
+@media(max-width:700px){.collection-categories:has([data-open-collection="pendants"]){grid-template-columns:repeat(2,minmax(0,1fr))}}

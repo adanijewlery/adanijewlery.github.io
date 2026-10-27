@@ -12,4 +12,8 @@
   </filter>
  </defs>
  <text x="286" y="91" text-anchor="middle" font-family="Georgia, Times New Roman, serif" font-size="94" letter-spacing="12" fill="url(#gold)" stroke="#a47a38" stroke-width=".55" paint-order="stroke" filter="url(#bevel)">ADANI</text>
+ <g id="registered-mark" fill="none" stroke="#dec087" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-label="Registered trademark">
+  <circle cx="520" cy="23" r="10"/>
+  <path d="M517 28V18h3a2.7 2.7 0 0 1 0 5.4h-3m3 0 3.5 4.6"/>
+ </g>
 </svg>

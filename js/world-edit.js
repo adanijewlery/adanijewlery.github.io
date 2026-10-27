@@ -8,7 +8,8 @@
  const panel=document.createElement('div');panel.className='world-dialog-options';panel.hidden=true;
  panel.innerHTML='<p class="world-dialog-carat"></p><p class="world-estimate-note">Design estimate only. Final diamond weight is confirmed with your design.</p><div class="world-gold-options" role="group" aria-label="Gold colour">'+Object.entries(metals).map(([key,label])=>'<button type="button" data-world-metal="'+key+'" aria-pressed="false"><i class="world-swatch '+key+'" aria-hidden="true"></i><span>'+label+'</span></button>').join('')+'</div><label class="world-purity"><span>Gold purity</span><select><option value="14">14k gold · Standard</option><option value="18">18k gold · Made to order</option></select></label>';
  link.before(panel);let current=null;
- function path(key,metal,size){return 'assets/images/'+key+'-'+metal+'-'+size+'.webp';}
+ const revisions=new Map(cards.map(card=>[card.dataset.worldKey,card.querySelector('.image-button').dataset.imageRevision||'']));
+ function path(key,metal,size){return 'assets/images/'+key+'-'+metal+'-'+size+'.webp'+(revisions.get(key)?'?v='+revisions.get(key):'');}
  function update(card,viewer=false){
   const key=card.dataset.worldKey,state=states.get(key),button=card.querySelector('.image-button'),photo=button.querySelector('img');
   photo.src=path(key,state.metal,480);photo.srcset=path(key,state.metal,480)+' 480w, '+path(key,state.metal,960)+' 960w';
@@ -18,9 +19,10 @@
   if(viewer){
    image.src=path(key,state.metal,1600);image.alt=button.dataset.name+' · '+metals[state.metal];
    panel.querySelector('.world-dialog-carat').textContent=card.dataset.caratLabel;
+   panel.querySelector('.world-estimate-note').textContent=card.dataset.standalone==='true'?"Choose a chain separately. Bail dimensions and compatibility are confirmed with your design.":'Design estimate only. Final diamond weight is confirmed with your design.';
    panel.querySelectorAll('[data-world-metal]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.worldMetal===state.metal)));
    panel.querySelector('select').value=state.purity;
-   link.href='https://wa.me/972545545132?text='+encodeURIComponent("Hello ADANI, I'd like to discuss this design: "+button.dataset.name+'\nGold colour: '+metals[state.metal]+'\nGold purity: '+state.purity+'k'+(state.purity==='18'?' (made to order)':'')+'\nDiamond design estimate: '+card.dataset.caratLabel+'\nPlease confirm the final diamond weight, size, availability and quote.');
+   link.href='https://wa.me/972545545132?text='+encodeURIComponent("Hello ADANI, I'd like to discuss this design: "+button.dataset.name+'\nGold colour: '+metals[state.metal]+'\nGold purity: '+state.purity+'k'+(state.purity==='18'?' (made to order)':'')+(card.dataset.standalone==='true'?'\nPendant only. Chain not included.':'\nDiamond design estimate: '+card.dataset.caratLabel)+'\nPlease confirm the final diamond weight, size, availability and quote.');
   }
  }
  cards.forEach(card=>{
@@ -34,7 +36,7 @@
   previous?.(button);current=button.closest('.world-edit-piece');panel.hidden=!current;
   if(current){
    update(current,true);
-   const note=dialog.querySelector('#dialog-concept-note');note.textContent='Design preview. Final materials, dimensions, availability and price are confirmed personally.';note.hidden=false;
+   const note=dialog.querySelector('#dialog-concept-note');note.textContent=current.dataset.standalone==='true'?"AI-created standalone pendant design. Final materials, dimensions, availability and price are confirmed personally.":'Design preview. Final materials, dimensions, availability and price are confirmed personally.';note.hidden=false;
   }
  }};
 })();

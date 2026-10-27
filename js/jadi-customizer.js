@@ -66,7 +66,7 @@
     box.querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>select(button.dataset.jadiMetal)));
     controls.push(box);return box;
   }
-  const dialogControls=makeControls();document.querySelector('#photo-views').before(dialogControls);
+  const dialogControls=makeControls();document.querySelector('#dialog-title').after(dialogControls);
   const status=document.createElement('p');status.className='jadi-finish-status';status.setAttribute('role','status');status.setAttribute('aria-live','polite');dialogControls.append(status);
   function isOpen(){return dialog.open&&dialog.dataset.jadi==='true';}
   function updateLinks(){

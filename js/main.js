@@ -87,7 +87,7 @@ function showPiece(button) {
   document.querySelector("#dialog-concept-note").hidden=button.dataset.concept!=="true";
   document.querySelector('#dialog-contact').href=whatsappEnquiry([button.dataset.name]);
   image.classList.add('is-loading');
-  image.src = `assets/images/${button.dataset.image}-1600.webp`;
+  image.src = `assets/images/${button.dataset.image}-1600.webp${button.dataset.imageRevision ? `?v=${button.dataset.imageRevision}` : ""}`;
   image.alt = button.querySelector('img').alt;
   const views = document.querySelector('#photo-views');
   const photos = button.dataset.photos ? JSON.parse(button.dataset.photos) : [];
@@ -199,8 +199,6 @@ function updateCabinet(reveal = false) {
   moreButton.textContent = `View ${matches.length - shown} more ${matches.length - shown === 1 ? 'piece' : 'pieces'} ↓`;
 }
 filters.forEach(button => button.addEventListener('click', () => {
-  const intro = document.querySelector('#pieces .section-heading > p');
-  if (intro) { intro.replaceChildren(document.createTextNode(button.dataset.filter === 'wedding' ? 'Wedding bands without diamonds.' : button.dataset.filter === 'saved' ? 'Your selected jewellery.' : 'Jewellery with diamonds.'), document.createElement('br'), document.createTextNode('Select a piece to discover its details.')); }
   jewelleryQuery = '';
   document.querySelector('#site-search').value = '';
   activeCategory = button.dataset.filter;
@@ -236,8 +234,6 @@ window.addEventListener('hashchange',openSetsFromHash);window.addEventListener('
 // Search the same collection so all existing previews and enquiry controls stay available.
 const jewellerySearch=document.querySelector('#site-search');
 function searchJewellery(){
- const intro=document.querySelector('#pieces .section-heading > p');
- if(intro)intro.replaceChildren(document.createTextNode('Explore the collection.'),document.createElement('br'),document.createTextNode('Select a piece to discover its details.'));
  jewelleryQuery=jewellerySearch.value.normalize('NFKC').trim().toLocaleLowerCase();
  cabinetSubset=null;activeCategory='all';cabinetLimit=jewelleryQuery?pieces.length:6;
  filters.forEach(filter=>filter.setAttribute('aria-pressed',String(filter.dataset.filter==='all')));
