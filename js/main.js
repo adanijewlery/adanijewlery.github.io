@@ -1,16 +1,18 @@
 // Add only verified business details here. Leave unused channels blank.
-const business = { phone: '+972545545132', email: '', instagram: 'https://www.instagram.com/adanijewelry/' };
+const business = { phone: '+972545545132', email: '', instagram: 'https://www.instagram.com/adanijewelry/', tiktok: 'https://www.tiktok.com/@adanijewelry' };
 const contactLinks = document.querySelector('#contact-links');
 const channels = [
   business.phone && { icon: 'whatsapp', label: 'WhatsApp ↗', href: `https://wa.me/${business.phone.replace(/\D/g, '')}` },
   business.phone && { icon: 'phone', label: 'Call us ↗', href: `tel:${business.phone.replace(/[^\d+]/g, '')}` },
   business.email && { label: 'Email us ↗', href: `mailto:${business.email}` },
-  business.instagram && { icon: 'instagram', label: 'Instagram ↗', href: business.instagram }
+  business.instagram && { icon: 'instagram', label: 'Instagram ↗', href: business.instagram },
+  business.tiktok && { icon: 'tiktok', label: 'TikTok ↗', href: business.tiktok, external: true }
 ].filter(Boolean);
 if (channels.length) {
-  contactLinks.replaceChildren(...channels.map(({label, href, icon}) => {
+  contactLinks.replaceChildren(...channels.map(({label, href, icon, external}) => {
     const link = document.createElement('a');
     link.href = href;
+    if (external) { link.target = "_blank"; link.rel = "noopener noreferrer"; }
     if (icon) {
       const image = document.createElement('img');
       image.src = `assets/icons/${icon}.svg`; image.alt = '';
