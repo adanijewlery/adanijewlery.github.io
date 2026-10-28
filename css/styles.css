@@ -182,4 +182,4 @@ html[dir=rtl] .photo-enquiry-label,html[dir=rtl] .photo-viewer-top>span{letter-s
 @media(max-width:700px){.mobile-ai-label{display:none!important}}
 
 /* Keep all four social/contact labels readable on narrow screens. */
-@media(max-width:1000px){.contact-copy .contact-links:has(a[href*="tiktok.com/"]){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 24px}.contact-copy .contact-links:has(a[href*="tiktok.com/"]) a{min-width:0;white-space:normal;text-align:center}}
+@media(max-width:1000px){.contact-copy .contact-links:has(a[href*="tiktok.com/"]){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 24px}.contact-copy .contact-links:has(a[href*="tiktok.com/"]) a{min-width:0;white-space:normal;text-align:center}.contact-copy .contact-links:has(a[href*="tiktok.com/"]) .enquiry-privacy{grid-column:1/-1}}
